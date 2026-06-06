@@ -1,0 +1,192 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% load portfolio_filters %}
+
+{% block title %}Home - Shalem Sandeep - AI Developer{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container-lg">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="hero-content">
+                    <span class="badge bg-primary mb-3">Welcome to my portfolio</span>
+                    <h1 class="display-4 fw-bold mb-3">
+                        Hi, I'm <span class="gradient-text">Shalem Sandeep</span>
+                    </h1>
+                    <p class="lead text-muted mb-4">
+                        AI Developer passionate about building intelligent solutions using Machine Learning, Deep Learning, and modern web technologies. Currently leading innovative projects at top tech companies.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap mb-4">
+                        <a href="{% url 'portfolio:portfolio' %}" class="btn btn-primary-custom btn-lg">
+                            <i class="fas fa-briefcase"></i> View My Work
+                        </a>
+                        <a href="{% url 'portfolio:contact' %}" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-envelope"></i> Get In Touch
+                        </a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/pshalemsandeep" target="_blank" class="social-icon-large">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/P-Shalem-Sandeep-babu" target="_blank" class="social-icon-large">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:23r11a6636@gcet.edu.in" class="social-icon-large">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-image">
+                    <img src="{% static 'portfolio/images/profile.jpg' %}" alt="Shalem Sandeep" class="img-fluid hero-image-img">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section class="section-padding bg-light">
+    <div class="container-lg">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="row g-4">
+            {% regroup skills by category as skills_by_category %}
+            {% for category, category_skills in skills_by_category %}
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-card">
+                    <h5 class="mb-3">{{ category }}</h5>
+                    <div class="skill-list">
+                        {% for skill in category_skills %}
+                        <div class="skill-item mb-2">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>{{ skill.name }}</span>
+                                <span class="badge bg-primary">{{ skill.get_proficiency_display }}</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" 
+                                     style="width: {{ skill.proficiency|mul:20 }}%"
+                                     aria-valuenow="{{ skill.proficiency }}" 
+                                     aria-valuemin="0" aria-valuemax="5"></div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects Section -->
+<section class="section-padding">
+    <div class="container-lg">
+        <div class="row mb-5">
+            <div class="col-lg-8">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="lead text-muted">Showcasing my best work in AI, ML, and Full-Stack development</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            {% for project in featured_projects %}
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card">
+                    {% if project.image %}
+                    <div class="project-image">
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}" class="img-fluid">
+                    </div>
+                    {% else %}
+                    <div class="project-image placeholder-project">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    {% endif %}
+                    <div class="project-content">
+                        <h5 class="mb-2">{{ project.title }}</h5>
+                        <p class="text-muted small mb-3">{{ project.description }}</p>
+                        <div class="project-tech mb-3">
+                            {% for tech in project.technologies|split:',' %}
+                            <span class="badge bg-secondary">{{ tech|strip }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="d-flex gap-2">
+                            {% if project.live_link %}
+                            <a href="{{ project.live_link }}" target="_blank" class="btn btn-sm btn-primary-custom">
+                                <i class="fas fa-external-link-alt"></i> Live
+                            </a>
+                            {% endif %}
+                            {% if project.github_link %}
+                            <a href="{{ project.github_link }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            {% endif %}
+                            <a href="{% url 'portfolio:project_detail' project.id %}" class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-arrow-right"></i> View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-5">
+            <a href="{% url 'portfolio:portfolio' %}" class="btn btn-primary-custom btn-lg">
+                View All Projects <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Experience Section -->
+<section class="section-padding bg-light">
+    <div class="container-lg">
+        <h2 class="section-title">Experience</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                {% for exp in experiences %}
+                <div class="experience-item {% if not forloop.last %}border-bottom{% endif %} pb-4 mb-4">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <span class="badge bg-primary mb-2">{{ exp.employment_type }}</span>
+                            <p class="text-muted small">
+                                {% if exp.is_current %}
+                                Current
+                                {% else %}
+                                {% if exp.end_date %}{{ exp.end_date|date:"M Y" }}{% endif %}
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="col-md-9">
+                            <h5 class="mb-1">{{ exp.position }}</h5>
+                            <p class="text-primary mb-2">{{ exp.company }}</p>
+                            <p class="text-muted">{{ exp.description }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container-lg">
+        <div class="text-center">
+            <h2 class="display-5 fw-bold mb-3 text-white">Ready to Build Something Great?</h2>
+            <p class="lead text-white-50 mb-4">Let's collaborate on innovative AI and ML projects</p>
+            <a href="{% url 'portfolio:contact' %}" class="btn btn-light btn-lg">
+                <i class="fas fa-envelope"></i> Contact Me Today
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Custom filter for split
+</script>
+{% endblock %}

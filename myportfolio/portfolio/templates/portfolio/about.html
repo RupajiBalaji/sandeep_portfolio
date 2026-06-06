@@ -1,0 +1,200 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% load portfolio_filters %}
+
+{% block title %}About Me - Shalem Sandeep{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container-lg">
+        <h1 class="display-4 fw-bold mb-3">About Me</h1>
+        <p class="lead text-muted">AI Developer | ML Engineer | Tech Lead</p>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="section-padding">
+    <div class="container-lg">
+        <div class="row g-5 align-items-center mb-5">
+            <div class="col-lg-6">
+                <div class="about-image">
+                    <div class="gradient-box-large"></div>
+                    <div class="icon-large-about">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="mb-4">Who Am I?</h2>
+                <p class="text-muted mb-4">
+                    I'm an AI Developer with a strong passion for building intelligent solutions using Machine Learning, Deep Learning, and modern web technologies.
+                </p>
+                <div class="mb-4">
+                    <a href="{% url 'portfolio:download_resume' %}" class="btn btn-primary-custom">
+                        <i class="fas fa-download"></i> Download My Resume
+                    </a>
+                </div>
+                <p class="lead text-muted mb-3">
+                    Currently pursuing a Bachelor of Technology in Computer Science with specialization in AI & ML at Geethanjali College of Engineering and Technology. With hands-on experience in developing AI-powered applications, data preprocessing, and model deployment.
+                </p>
+                <p class="text-muted mb-4">
+                    As a Tech Lead at Viswam AI, I've guided a student development team on MERN Stack development and helped build scalable web applications. My expertise spans full-stack development, AI/ML model creation, and turning complex problems into elegant solutions.
+                </p>
+                <div class="d-flex gap-4">
+                    <div>
+                        <h3 class="text-primary mb-2">5+</h3>
+                        <p class="text-muted">Projects Completed</p>
+                    </div>
+                    <div>
+                        <h3 class="text-primary mb-2">3+</h3>
+                        <p class="text-muted">Years Experience</p>
+                    </div>
+                    <div>
+                        <h3 class="text-primary mb-2">10+</h3>
+                        <p class="text-muted">Skills Mastered</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience Section -->
+<section class="section-padding bg-light">
+    <div class="container-lg">
+        <h2 class="section-title mb-5">Professional Experience</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                {% for exp in experiences %}
+                <div class="experience-timeline {% if not forloop.last %}border-bottom{% endif %}">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content pb-4 mb-4">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <div>
+                                <h5 class="mb-1">{{ exp.position }}</h5>
+                                <p class="text-primary mb-2">{{ exp.company }}</p>
+                            </div>
+                            <span class="badge bg-primary">{{ exp.employment_type }}</span>
+                        </div>
+                        <p class="text-muted small mb-3">
+                            {{ exp.start_date|date:"M Y" }} 
+                            - 
+                            {% if exp.is_current %}
+                                <span class="badge bg-success">Current</span>
+                            {% else %}
+                                {{ exp.end_date|date:"M Y" }}
+                            {% endif %}
+                        </p>
+                        <p class="text-muted">{{ exp.description }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Education Section -->
+<section class="section-padding">
+    <div class="container-lg">
+        <h2 class="section-title mb-5">Education</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                {% for edu in education %}
+                <div class="education-item {% if not forloop.last %}border-bottom{% endif %} pb-4 mb-4">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <div>
+                            <h5 class="mb-1">{{ edu.degree }}</h5>
+                            <p class="text-primary mb-2">{{ edu.institution }}</p>
+                        </div>
+                        <span class="badge bg-secondary">{{ edu.start_date|date:"Y" }}-{% if edu.end_date %}{{ edu.end_date|date:"Y" }}{% else %}Present{% endif %}</span>
+                    </div>
+                    <p class="text-muted small mb-2">Field: {{ edu.field_of_study }}</p>
+                    {% if edu.description %}
+                    <p class="text-muted">{{ edu.description }}</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Certifications Section -->
+{% if certifications %}
+<section class="section-padding bg-light">
+    <div class="container-lg">
+        <h2 class="section-title mb-5">Certifications</h2>
+        <div class="row g-4">
+            {% for cert in certifications %}
+            <div class="col-md-6 col-lg-4">
+                <div class="certification-card">
+                    <div class="cert-icon mb-3">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h5 class="mb-2">{{ cert.title }}</h5>
+                    <p class="text-primary small mb-2">{{ cert.issuer }}</p>
+                    <p class="text-muted small mb-3">{{ cert.date|date:"M Y" }}</p>
+                    {% if cert.description %}
+                    <p class="text-muted small mb-3">{{ cert.description }}</p>
+                    {% endif %}
+                    {% if cert.certificate_link %}
+                    <a href="{{ cert.certificate_link }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                        <i class="fas fa-download"></i> View Certificate
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Skills Overview -->
+<section class="section-padding">
+    <div class="container-lg">
+        <h2 class="section-title mb-5">Technical Skills</h2>
+        <div class="row g-4">
+            {% regroup skills by category as skills_by_category %}
+            {% for category, category_skills in skills_by_category %}
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-card">
+                    <h5 class="mb-4">{{ category }}</h5>
+                    <div class="skill-list">
+                        {% for skill in category_skills %}
+                        <div class="skill-item mb-3">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted">{{ skill.name }}</span>
+                                <span class="badge bg-primary">{{ skill.proficiency }}/5</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" 
+                                     style="width: {{ skill.proficiency|mul:20 }}%"
+                                     aria-valuenow="{{ skill.proficiency }}" 
+                                     aria-valuemin="0" aria-valuemax="5"></div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container-lg">
+        <div class="text-center">
+            <h2 class="display-5 fw-bold mb-3 text-white">Let's Work Together!</h2>
+            <p class="lead text-white-50 mb-4">Ready to bring your AI and ML projects to life</p>
+            <a href="{% url 'portfolio:contact' %}" class="btn btn-light btn-lg">
+                <i class="fas fa-envelope"></i> Contact Me
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

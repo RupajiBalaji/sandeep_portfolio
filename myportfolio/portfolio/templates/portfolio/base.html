@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Shalem Sandeep - AI Developer & ML Engineer{% endblock %}</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'portfolio/css/style.css' %}" rel="stylesheet">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-lg">
+            <a class="navbar-brand fw-bold" href="{% url 'portfolio:home' %}">
+                <i class="fas fa-code"></i> Shalem Sandeep
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'portfolio:home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'portfolio' %}active{% endif %}" href="{% url 'portfolio:portfolio' %}">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'portfolio:about' %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-download-nav ms-2" href="{% url 'portfolio:download_resume' %}" title="Download Resume">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-primary-custom ms-2 {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'portfolio:contact' %}">
+                            Contact <i class="fas fa-paper-plane"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container-lg py-5">
+            <div class="row mb-4">
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-white mb-3">Shalem Sandeep</h5>
+                    <p class="text-muted">AI Developer passionate about building intelligent solutions.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-white mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'portfolio:home' %}" class="text-muted text-decoration-none">Home</a></li>
+                        <li><a href="{% url 'portfolio:portfolio' %}" class="text-muted text-decoration-none">Portfolio</a></li>
+                        <li><a href="{% url 'portfolio:about' %}" class="text-muted text-decoration-none">About</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-white mb-3">Connect With Me</h5>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/pshalemsandeep" target="_blank" class="social-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/P-Shalem-Sandeep-babu" target="_blank" class="social-icon">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:23r11a6636@gcet.edu.in" class="social-icon">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-muted mb-0">&copy; 2024 Shalem Sandeep. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-muted mb-0">Built with <i class="fas fa-heart text-danger"></i> using Django</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'portfolio/js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

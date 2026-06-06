@@ -1,0 +1,94 @@
+PERUMALLA SHALEM SANDEEP BABU
+AI Developer & ML Engineer
+
+📧 Email: 23r11a6636@gcet.edu.in
+🔗 LinkedIn: https://linkedin.com/in/pshalemsandeep
+🔗 GitHub: https://github.com/P-Shalem-Sandeep-babu
+
+================================================================================
+SUMMARY
+================================================================================
+
+AI Developer with strong interest in Machine Learning, Deep Learning, and intelligent automation systems. Skilled in building AI-powered applications such as chatbots, recommendation systems, and predictive models. Experienced in Python, data processing, and model deployment. Passionate about developing scalable AI solutions that enhance user engagement and business performance.
+
+================================================================================
+TECHNICAL SKILLS
+================================================================================
+
+Programming Languages:       Python, Java, SQL
+AI & Machine Learning:       Machine Learning, Deep Learning, NLP, Computer Vision
+Libraries & Frameworks:      TensorFlow, PyTorch, Scikit-learn, Pandas, NumPy
+Web & Tools:                 MERN Stack, Flask, Git, GitHub
+Data Skills:                 Data Cleaning, Feature Engineering, Model Training, Model Evaluation
+Other Skills:                API Integration, Automation Scripts, Data Visualization
+
+================================================================================
+PROFESSIONAL EXPERIENCE
+================================================================================
+
+Tech Lead — Viswam AI (Current)
+• Led a student development team and provided technical guidance on MERN Stack development
+• Trained team members on setting up development environments and integrating API keys and backend services
+• Guided developers in building scalable web applications and troubleshooting technical issues
+• Coordinated team tasks and ensured timely project execution
+
+Software Development Intern — Urvha Dynamic Private Limited (Currently Ongoing)
+• Developing a company-focused software product based on organizational requirements
+• Contributing to backend development and feature implementation using modern development tools
+• Assisting in testing, debugging, and optimizing system performance
+• Collaborating with team members to enhance functionality and improve product reliability
+
+AI & Cloud Intern — Edunet Foundation (AI Internship Program) [Completed]
+• Completed hands-on internship focused on Artificial Intelligence and Machine Learning applications
+• Built and tested machine learning models using Python, NumPy, Pandas, and Scikit-learn
+• Worked on real-world datasets involving data preprocessing, visualization, and model training
+• Gained practical experience in AI workflows, model evaluation, and deployment concepts
+
+================================================================================
+PROJECT EXPERIENCE
+================================================================================
+
+Path2Learn — AI-Based Smart Study Platform (Full-Stack + AI Project)
+• Developed an AI-powered education platform to help students focus, track progress, and improve learning efficiency
+• Designed and implemented frontend using HTML, CSS, and JavaScript with structured backend integration
+• Integrated intelligent features such as study reminders, performance tracking, and smart learning suggestions
+• Built database structures to manage user activity, learning modules, and performance data
+
+Current Crunches — AI News Aggregator (Full-Stack + App + AI Project)
+• Developed a real-time news aggregation platform to fetch and display latest news updates from multiple sources
+• Designed and implemented a responsive web application using React for smooth user interaction
+• Integrated external News APIs to retrieve live news content across various categories
+• Implemented AI-based text summarization using NLP/LLM APIs to generate concise news summaries
+• Added search and category filtering features to improve content accessibility and user experience
+• Optimized UI layout for better readability, performance, and faster content consumption
+
+AI-Powered Chatbot System
+• Built an intelligent chatbot system using NLP and machine learning for automated customer support
+• Integrated with various communication channels and implemented natural language understanding
+• Deployed on cloud infrastructure with scalable architecture
+
+================================================================================
+EDUCATION
+================================================================================
+
+Bachelor of Technology (2023-2027)
+Geethanjali College of Engineering and Technology
+Computer Science (Specialization in AI & ML)
+
+================================================================================
+CERTIFICATIONS
+================================================================================
+
+• Data Science and Gen AI — Aimerz.ai
+  Advanced Data Science and Gen & Agentic AI comprehensive program
+
+• Introduction to Quantum Computing — Microsoft
+  Quantum principles and applications fundamentals
+
+================================================================================
+LANGUAGES
+================================================================================
+
+English, Telugu, Hindi
+
+================================================================================
